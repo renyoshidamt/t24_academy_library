@@ -1,5 +1,6 @@
 package jp.co.metateam.library.controller;
 
+import jp.co.metateam.library.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +17,16 @@ import lombok.extern.log4j.Log4j2;
 
 import jp.co.metateam.library.model.RentalManage;
 import jp.co.metateam.library.model.RentalManageDto;
-import jp.co.metateam.library.service.RentalManageService;
+import jp.co.metateam.library.model.Account;
+import jp.co.metateam.library.model.AccountDto;
+import jp.co.metateam.library.model.Stock;
+import jp.co.metateam.library.model.StockDto;
 import jp.co.metateam.library.values.RentalStatus;
+import jp.co.metateam.library.values.StockStatus;
+import jp.co.metateam.library.repository.RentalManageRepository;
+import jp.co.metateam.library.repository.AccountRepository;
+import jp.co.metateam.library.repository.StockRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -61,9 +70,11 @@ public class RentalManageController {
     }
     @GetMapping("/rental/add")
     public String add(Model model) {
-        List<RentalManage> rentalManageList = this.rentalManageService.findAll();
+        List<Account> accountList = this.accountService.findAll();
+        List<Stock> stockList = this.stockService.findStockAvailableAll();
 
-        model.addAttribute("rentalManageList", rentalManageList);
+        model.addAttribute("stockList", stockList);
+        model.addAttribute("accounts", accountList);
         model.addAttribute("rentalStatus", RentalStatus.values());
 
         if (!model.containsAttribute("rentalManageDto")) {
@@ -77,7 +88,7 @@ public class RentalManageController {
             if (result.hasErrors()) {
                 throw new Exception("Validation error.");
             }
-            // 登録処理
+            
             this.rentalManageService.save(rentalManageDto);
 
             return "redirect:/rental/index";
