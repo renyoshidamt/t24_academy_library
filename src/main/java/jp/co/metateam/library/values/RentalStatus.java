@@ -12,5 +12,6 @@ public enum RentalStatus implements Values {
     , CANCELED(3, "キャンセル");
 
     private final Integer value;
-    private final String text;  
+    private final String text;
+        
 }
