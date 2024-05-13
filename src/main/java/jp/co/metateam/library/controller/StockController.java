@@ -115,9 +115,11 @@ public class StockController {
     @PostMapping("/stock/{id}/edit")
     public String update(@PathVariable("id") String id, @Valid @ModelAttribute StockDto stockDto, BindingResult result, RedirectAttributes ra) {
         try {
+            //ステータスチェック
             if (result.hasErrors()) {
                 throw new Exception("Validation error.");
             }
+            
             // 登録処理
             stockService.update(id, stockDto);
 
