@@ -16,12 +16,12 @@ public interface RentalManageRepository extends JpaRepository<RentalManage, Long
 	Optional<RentalManage> findById(Long id);
 
 @Query("select rm"
-        + " from RentalManage rm " + " where rm.status = 0 or rm.status = 1"
+        + " from RentalManage rm " + " where (rm.status = 0 or rm.status = 1)"
         + " and rm.stock.id = ?1 "
         + " and rm.id <> ?2 ")
     List<RentalManage> findByStockIdAndStatusIn(String Id,Long rentalId);
 @Query("select rm"
-    + " from RentalManage rm " + " where rm.status = 0 or rm.status = 1"
+    + " from RentalManage rm " + " where (rm.status = 0 or rm.status = 1)"
     + " and rm.stock.id = ?1 ")
     List<RentalManage> findByStockIdAndStatusIn(String Id);
 

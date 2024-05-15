@@ -214,7 +214,7 @@ public class RentalManageController {
                 //ループ
                 for(RentalManage list : rentalAvailable){
                     
-                    if(rentalManageDto.getExpectedRentalOn().after(list.getExpectedReturnOn())){
+                    if(list.getExpectedReturnOn().after(rentalManageDto.getExpectedRentalOn())){
                         return "貸出予定日が重複しています";
                     }
                 }
@@ -226,7 +226,7 @@ public class RentalManageController {
           List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id,Long.valueOf(rentalId));
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
-                if(rentalManageDto.getExpectedReturnOn().before(list.getExpectedRentalOn())){
+                if(list.getExpectedRentalOn().before(rentalManageDto.getExpectedReturnOn())){
                     return "返却予定日が重複しています";
                 }
                 
@@ -242,7 +242,7 @@ public class RentalManageController {
         //ループ
              for(RentalManage list : rentalAvailable){
             
-               if(rentalManageDto.getExpectedRentalOn().after(list.getExpectedReturnOn())){
+               if(list.getExpectedReturnOn().after(rentalManageDto.getExpectedRentalOn())){
                 return "貸出予定日が重複しています";
                }
               }
@@ -254,7 +254,7 @@ public class RentalManageController {
          List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id);
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
-               if(rentalManageDto.getExpectedReturnOn().before(list.getExpectedRentalOn())){
+                if(list.getExpectedRentalOn().before(rentalManageDto.getExpectedReturnOn())){
                  return "返却予定日が重複しています";
                }
             }
