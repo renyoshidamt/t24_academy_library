@@ -215,7 +215,7 @@ public class RentalManageController {
                 for(RentalManage list : rentalAvailable){
                     
                     if(rentalManageDto.getExpectedRentalOn().after(list.getExpectedReturnOn())){
-                        return "貸出不可です";
+                        return "貸出予定日が重複しています";
                     }
                 }
             }   
@@ -227,7 +227,7 @@ public class RentalManageController {
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
                 if(rentalManageDto.getExpectedReturnOn().before(list.getExpectedRentalOn())){
-                    return "返却予定日不可";
+                    return "返却予定日が重複しています";
                 }
                 
             }
@@ -243,7 +243,7 @@ public class RentalManageController {
              for(RentalManage list : rentalAvailable){
             
                if(rentalManageDto.getExpectedRentalOn().after(list.getExpectedReturnOn())){
-                return "貸出不可です";
+                return "貸出予定日が重複しています";
                }
               }
              }   
@@ -255,7 +255,7 @@ public class RentalManageController {
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
                if(rentalManageDto.getExpectedReturnOn().before(list.getExpectedRentalOn())){
-                 return "返却予定日不可";
+                 return "返却予定日が重複しています";
                }
             }
           }
