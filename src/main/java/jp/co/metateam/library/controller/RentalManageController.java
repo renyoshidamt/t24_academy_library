@@ -226,7 +226,7 @@ public class RentalManageController {
           List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id,Long.valueOf(rentalId));
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
-                if(list.getExpectedRentalOn().before(rentalManageDto.getExpectedReturnOn())){
+                if(list.getExpectedRentalOn().after(rentalManageDto.getExpectedReturnOn())){
                     return "返却予定日が重複しています";
                 }
                 
@@ -254,7 +254,7 @@ public class RentalManageController {
          List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id);
           if (rentalAvailable != null){
             for(RentalManage list : rentalAvailable){
-                if(list.getExpectedRentalOn().before(rentalManageDto.getExpectedReturnOn())){
+                if(list.getExpectedRentalOn().after(rentalManageDto.getExpectedReturnOn())){
                  return "返却予定日が重複しています";
                }
             }
