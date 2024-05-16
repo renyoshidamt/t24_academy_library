@@ -204,7 +204,7 @@ public class RentalManageController {
         }
     }    
         
-         public String DateCheck (RentalManageDto rentalManageDto,String Id,Long rentalId){
+     public String DateCheck (RentalManageDto rentalManageDto,String Id,Long rentalId){
            
             List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id,Long.valueOf(rentalId));
             
@@ -221,7 +221,7 @@ public class RentalManageController {
             return null;
     }     
         
-        public String DateCheck (RentalManageDto rentalManageDto,String Id){
+    public String DateCheck (RentalManageDto rentalManageDto,String Id){
 
           List<RentalManage> rentalAvailable = this.rentalManageService.findByStockIdAndStatusIn(Id);
 
@@ -235,8 +235,8 @@ public class RentalManageController {
                     }
                 }
             }   
-              return null;
-        }
+            return null;
+    }
 }
 
 
