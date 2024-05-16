@@ -2,7 +2,11 @@ package jp.co.metateam.library.model;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
+import javax.xml.crypto.Data;
+
+import jp.co.metateam.library.service.StockService;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -48,7 +52,7 @@ public class RentalManageDto {
 
     private Account account;
 
-    
+        
     public String isValidStatus(Integer preStatus)  {
         //RentalManage rentalManage = this.RentalManageService.findById(Long.valueOf(id));
         if(preStatus == RentalStatus.RENT_WAIT.getValue() && this.status == RentalStatus.CANCELED.getValue() ){    
@@ -72,6 +76,7 @@ public class RentalManageDto {
         }
         return null;
     }
+
     
 }
 
