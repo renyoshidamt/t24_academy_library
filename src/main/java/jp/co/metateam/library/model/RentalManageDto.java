@@ -55,7 +55,7 @@ public class RentalManageDto {
         
     public String isValidStatus(Integer preStatus)  {
         //RentalManage rentalManage = this.RentalManageService.findById(Long.valueOf(id));
-        if(preStatus == RentalStatus.RENT_WAIT.getValue() && this.status == RentalStatus.CANCELED.getValue() ){    
+        if(preStatus == RentalStatus.RENT_WAIT.getValue() && this.status == RentalStatus.RETURNED.getValue() ){    
             return "貸出ステータスは「貸出待ち」から「返却済み」に変更できません";
         }else if(preStatus == RentalStatus.RENTAlING.getValue() && this.status == RentalStatus.RENT_WAIT.getValue()){
             return "貸出ステータスは「貸出中」から「貸出待ち」に変更できません";
@@ -73,6 +73,15 @@ public class RentalManageDto {
             return "貸出ステータスは「キャンセル」から「貸出中」に変更できません";
         }else if(preStatus == RentalStatus.CANCELED.getValue() && this.status == RentalStatus.RETURNED.getValue()){
             return "貸出ステータスは「キャンセル」から「返却済み」に変更できません";
+        }
+        return null;
+    }
+
+    public String validDateCheck(){
+        if(this.expectedRentalOn != null && this.expectedReturnOn != null){
+            if(this.expectedReturnOn.before(this.expectedRentalOn)){
+                return "返却予定日は貸出予定日より後の日付を入力してください";
+            }
         }
         return null;
     }
