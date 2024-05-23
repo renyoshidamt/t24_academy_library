@@ -95,6 +95,8 @@ public class RentalManageController {
 
             String DateError = this.dateCheck(rentalManageDto);
             String returnError = rentalManageDto.validDateCheck();
+            String formatError = rentalManageDto.dateFormatCheck();
+
 
             if (DateError != null) {
                 result.addError(new FieldError("rentalManageDto", "expectedRentalOn", DateError));
@@ -106,6 +108,14 @@ public class RentalManageController {
 
             if (returnError != null) {
                 result.addError(new FieldError("rentalManageDto", "expectedReturnOn", returnError));
+            }
+
+            if (formatError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", formatError));
+            }
+
+            if (formatError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedReturnOn", formatError));
             }
 
             if (result.hasErrors()) {
@@ -173,6 +183,7 @@ public class RentalManageController {
             String validerror = rentalManageDto.isValidStatus(rentalManage.getStatus());
             String DateError = this.dateCheck(rentalManageDto, Long.valueOf(id));
             String returnError = rentalManageDto.validDateCheck();
+            String formatError = rentalManageDto.dateFormatCheck();
 
             if (validerror != null) {
                 result.addError(new FieldError("rentalManageDto", "status", validerror));
@@ -188,6 +199,14 @@ public class RentalManageController {
 
             if (returnError != null) {
                 result.addError(new FieldError("rentalManageDto", "expectedReturnOn", returnError));
+            }
+
+            if (formatError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", formatError));
+            }
+
+            if (formatError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedReturnOn", formatError));
             }
 
             if (result.hasErrors()) {

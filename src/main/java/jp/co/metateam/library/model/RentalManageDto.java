@@ -1,6 +1,7 @@
 package jp.co.metateam.library.model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,9 @@ import jakarta.validation.constraints.NotNull;
 import jp.co.metateam.library.values.RentalStatus;
 import lombok.Getter;
 import lombok.Setter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 
 /**
  * 貸出管理DTO
@@ -86,7 +90,21 @@ public class RentalManageDto {
         return null;
     }
 
-    
+    public String dateFormatCheck(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String rentalFormat = format.format(expectedRentalOn);
+        String returnFormat = format.format(expectedReturnOn);
+        if(rentalFormat != "yyyy-MM-dd"){
+            return "フォーマットエラーです";
+        }
+        if(returnFormat != "yyyy-MM-dd"){
+            return "フォーマットエラーです";
+        }
+        return null;
+    }
 }
-
+        
+        
+    
+ 
 
