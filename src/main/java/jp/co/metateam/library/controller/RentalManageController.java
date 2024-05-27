@@ -95,7 +95,7 @@ public class RentalManageController {
 
             String DateError = this.dateCheck(rentalManageDto);
             String returnError = rentalManageDto.validDateCheck();
-            String formatError = rentalManageDto.dateFormatCheck();
+            String rentalError = rentalManageDto.validRentalCheck();
 
 
             if (DateError != null) {
@@ -110,12 +110,8 @@ public class RentalManageController {
                 result.addError(new FieldError("rentalManageDto", "expectedReturnOn", returnError));
             }
 
-            if (formatError != null){
-                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", formatError));
-            }
-
-            if (formatError != null){
-                result.addError(new FieldError("rentalManageDto", "expectedReturnOn", formatError));
+            if(rentalError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", rentalError));
             }
 
             if (result.hasErrors()) {
@@ -183,7 +179,7 @@ public class RentalManageController {
             String validerror = rentalManageDto.isValidStatus(rentalManage.getStatus());
             String DateError = this.dateCheck(rentalManageDto, Long.valueOf(id));
             String returnError = rentalManageDto.validDateCheck();
-            String formatError = rentalManageDto.dateFormatCheck();
+            String rentalError = rentalManageDto.validRentalCheck();
 
             if (validerror != null) {
                 result.addError(new FieldError("rentalManageDto", "status", validerror));
@@ -201,12 +197,8 @@ public class RentalManageController {
                 result.addError(new FieldError("rentalManageDto", "expectedReturnOn", returnError));
             }
 
-            if (formatError != null){
-                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", formatError));
-            }
-
-            if (formatError != null){
-                result.addError(new FieldError("rentalManageDto", "expectedReturnOn", formatError));
+            if(rentalError != null){
+                result.addError(new FieldError("rentalManageDto", "expectedRentalOn", rentalError));
             }
 
             if (result.hasErrors()) {

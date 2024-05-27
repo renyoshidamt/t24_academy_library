@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 import jp.co.metateam.library.values.RentalStatus;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.text.ParseException;
 
@@ -90,15 +90,12 @@ public class RentalManageDto {
         return null;
     }
 
-    public String dateFormatCheck(){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String rentalFormat = format.format(expectedRentalOn);
-        String returnFormat = format.format(expectedReturnOn);
-        if(rentalFormat != "yyyy-MM-dd"){
-            return "フォーマットエラーです";
-        }
-        if(returnFormat != "yyyy-MM-dd"){
-            return "フォーマットエラーです";
+    public String validRentalCheck(){
+        if(this.expectedRentalOn != null){
+            Date today = new Date();
+            if(this.expectedRentalOn.before(today)){
+                return "貸出予定日は現在日付以降を選択してください";
+            }
         }
         return null;
     }
