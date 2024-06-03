@@ -2,6 +2,7 @@ package jp.co.metateam.library.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
@@ -71,10 +73,12 @@ public class RentalManageController {
     }
 
     @GetMapping("/rental/add")
-    public String add(Model model) {
+    public String add(Model model,@RequestParam(value ="bookId", required = false) String bookId, 
+    @RequestParam(value = "expectedRentalOn",required = false) Date expectedRentalOn) {
 
         List<Account> accountList = this.accountService.findAll();
         List<Stock> stockList = this.stockService.findStockAvailableAll();
+        //stockService.findByAvailableTittleAndDate(stockId, expectedRentalOn);
 
         model.addAttribute("stockList", stockList);
         model.addAttribute("accounts", accountList);
@@ -82,7 +86,19 @@ public class RentalManageController {
         // 貸出一覧画面に渡すデータをmodelに追加
 
         if (!model.containsAttribute("rentalManageDto")) {
-            model.addAttribute("rentalManageDto", new RentalManageDto());
+
+            RentalManageDto rentalManageDto = new RentalManageDto();
+            
+            if(expectedRentalOn != null){
+                rentalManageDto.setExpectedRentalOn(expectedRentalOn);
+            }
+            if(bookId != null){
+                //bookIdとrentalOnから貸出可能な在庫を取得する。その後に貸出可能な在庫の1つのStockデータからStockIdを取得
+                //取得したものをセット
+                rentalManageDto.setStockId(bookId);
+            }
+            
+            model.addAttribute("rentalManageDto", rentalManageDto);
         }
         return "rental/add";
         // 貸出一覧画面に遷移

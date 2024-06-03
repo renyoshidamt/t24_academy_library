@@ -65,7 +65,6 @@ public class RentalManageService {
 
             RentalManage rentalManage = new RentalManage();
             rentalManage = setRentalStatusDate(rentalManage, rentalManageDto.getStatus());
-
             rentalManage.setAccount(account);
             rentalManage.setExpectedRentalOn(rentalManageDto.getExpectedRentalOn());
             rentalManage.setExpectedReturnOn(rentalManageDto.getExpectedReturnOn());
