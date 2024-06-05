@@ -3,7 +3,6 @@ package jp.co.metateam.library.repository;
 import java.util.List;
 import java.util.Optional;
 import java.util.Date;
-import java.time.LocalDate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,9 +31,6 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
         +" inner join RentalManage rm on rm.stock.id = st.id"
         +" where (st.bookMst.id = ?1 and rm.status in (0,1)  and rm.expectedRentalOn <= ?2 and ?2 <= rm.expectedReturnOn)")
     int findByAvailableCount(Long book_id,Date date);
-
-
-
 }
 
 

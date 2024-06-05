@@ -30,10 +30,10 @@ public interface RentalManageRepository extends JpaRepository<RentalManage, Long
         + " from Stock st"
         + " join bookMst bm on st.bookMst.id = bm.id"
         + " left join RentalManage rm on st.id = rm.stock.id"
-        + " where(st.bookMst.id = ?1 and rm.expectedRentalOn >= ?2 or ?2 >= rm.expectedReturnOn)"
+        + " and st.bookMst.id = ?1"
+        + " where(rm.expectedRentalOn >= ?2 or ?2 >= rm.expectedReturnOn or rm.stock.id is null)"
         + " and st.status in (0)")
-    List<String> findByAvailableStockId(String bookId,Date date);
-
+    List<String> findByAvailableStockId(Long book_id,Date date);
 }
 
 

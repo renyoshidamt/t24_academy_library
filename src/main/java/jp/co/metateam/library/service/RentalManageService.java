@@ -7,14 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.validation.constraints.AssertFalse;
 import jp.co.metateam.library.model.Account;
-import jp.co.metateam.library.model.BookMst;
-import jp.co.metateam.library.model.BookMstDto;
 import jp.co.metateam.library.model.RentalManage;
 import jp.co.metateam.library.model.RentalManageDto;
 import jp.co.metateam.library.model.Stock;
-import jp.co.metateam.library.model.StockDto;
 import jp.co.metateam.library.repository.AccountRepository;
 import jp.co.metateam.library.repository.RentalManageRepository;
 import jp.co.metateam.library.repository.StockRepository;

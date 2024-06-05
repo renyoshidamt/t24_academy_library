@@ -1,8 +1,6 @@
 package jp.co.metateam.library.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,16 +20,12 @@ import lombok.extern.log4j.Log4j2;
 import jp.co.metateam.library.model.RentalManage;
 import jp.co.metateam.library.model.RentalManageDto;
 import jp.co.metateam.library.model.Account;
-import jp.co.metateam.library.model.BookMst;
 import jp.co.metateam.library.model.Stock;
-import jp.co.metateam.library.model.StockDto;
 import jp.co.metateam.library.values.RentalStatus;
-import jp.co.metateam.library.values.StockStatus;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.crypto.Data;
 
 import jakarta.validation.Valid;
 

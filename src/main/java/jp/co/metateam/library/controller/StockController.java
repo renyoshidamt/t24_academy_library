@@ -2,10 +2,8 @@ package jp.co.metateam.library.controller;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import jp.co.metateam.library.model.BookMst;
-import jp.co.metateam.library.model.RentalManageDto;
 import jp.co.metateam.library.model.Stock;
 import jp.co.metateam.library.model.StockDto;
 import jp.co.metateam.library.service.BookMstService;

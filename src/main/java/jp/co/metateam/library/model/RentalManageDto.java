@@ -1,13 +1,7 @@
 package jp.co.metateam.library.model;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import javax.xml.crypto.Data;
-
-import jp.co.metateam.library.service.StockService;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,9 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import jp.co.metateam.library.values.RentalStatus;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.text.ParseException;
+
 
 /**
  * 貸出管理DTO
